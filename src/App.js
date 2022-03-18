@@ -56,6 +56,7 @@ function App() {
         <div className="content">
           <div className="content__header">
             <div className="todo__search">
+              <input></input>
                 <span>Search</span>
                 <img width={30} src="./img/search.png" alt="Create a new entry"/>
             </div>
