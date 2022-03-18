@@ -1,0 +1,145 @@
+html{
+    margin: 0;
+    font-family: 'NTR', sans-serif;
+}
+
+body{
+    background: linear-gradient(180deg, #4ce08a 0%, rgba(225, 222, 53, 0.75) 100%);
+    background-attachment: fixed;
+}
+
+.wrapper {
+    width: calc(100vw - 100px);
+    height: 100%;
+    margin: 50px auto;
+    max-width: 1042px;
+    display: flex;
+}
+
+.menu{
+    width: 336px;
+    height: 825px;
+    display: flex;
+    justify-content: center;
+
+    position: fixed;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 25px rgba(4, 4, 4, 0.3);
+    border-radius: 30px;
+
+    h1{
+        font-weight: 400;
+        font-size: 36px;
+        color: #2ECC71;
+    }
+
+    &__themes{
+        margin-top: -25px;
+
+        &-title{
+            font-weight: 400;
+            font-size: 24px;
+            color: #2ECC71;
+
+            img{
+                margin-bottom: -4px;
+                margin-right: 6px;
+            }
+        }
+    }
+
+    .create__theme{
+        margin-bottom: 30px;
+    }
+
+    &__theme{
+        font-size: 22px;
+        img{
+            margin-bottom: -6px;
+            margin-left: 42px;
+        }
+    }
+
+    .create__theme{
+        width: 234px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        border: 1px solid rgba(237, 229, 46, 0.6);
+        box-sizing: border-box;
+        box-shadow: 0px 0px 5px 1px #EDE52E;
+        border-radius: 30px;
+
+        span{
+            font-weight: 400;
+            font-size: 24px;
+            color: #2ECC71;
+            margin-left: 8px;
+            margin-top: 2px;
+
+        }
+    }
+
+    &__calendar{
+        font-weight: 400;
+        font-size: 24px;
+        color: #2ECC71;
+
+        img{
+            margin-bottom: -4px;
+            margin-right: 6px;
+        }
+
+        .calendar{
+            width: 234px;
+            height: 211px;
+
+            border: 1px solid rgba(237, 229, 46, 0.6);
+            box-sizing: border-box;
+            box-shadow: 0px 0px 5px 1px #EDE52E;
+            border-radius: 30px;
+        }
+    }
+
+    &__lang{
+        width: 65px;
+        height: 30px;
+        margin-top: 45px;
+        display: flex;
+        align-items: center;
+
+        background: #FFFFFF;
+        box-shadow: 0px 0px 5px 1px rgba(237, 229, 46, 0.9);
+        border-radius: 25px;
+    }
+}
+
+
+
+.date{
+    img{
+        vertical-align: sub;
+        padding-right: 5px;
+    }
+}
+.actions{
+    display: flex;
+
+    .edit, .delete{
+        img{
+            vertical-align: sub;
+            margin-left: 5px;
+            margin-bottom: -1px;
+        }
+    }
+
+    .edit{
+        padding-right: 25px;
+    }
+    .delete{
+        color:#E74C3C;
+    }
+}
+
