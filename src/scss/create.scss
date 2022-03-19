@@ -1,4 +1,4 @@
-.todo__memo{
+.create__memo{
     width: 670px;
     height: 690px;
     display: flex;
@@ -8,7 +8,7 @@
     position: fixed;
     margin: 120px 36px;
 
-    .memo__info{
+    .create__top{
         background: #fff;
         height: 60px;
         padding: 5px 20px 0px 20px;
@@ -30,7 +30,7 @@
         outline: none;
     }
 
-    .memo__theme, .memo__title{
+    .create__theme, .create__title{
         padding: 8px 20px;
         height: 36px;
         font-size: 18px;
@@ -40,7 +40,7 @@
         resize: none;
     }
 
-    .memo__text{
+    .create__text{
         padding: 10px 20px;
         height: 690px;
         margin-top: -2px;
