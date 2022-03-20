@@ -2,16 +2,16 @@ import React from 'react';
 
 
 
-function Create() {
+function Create({ open, setOpen}) {
     return (
-        <div className="content">
+        <div className={open ? 'content' : 'content open'}>
             <div className="content__header">
                 <div className="header__search">
                     <input type="text" placeholder="Search"/>
                     <img width={30} src="./img/search.png" alt="search"/>
                 </div>
                 <div className="header__buttons">
-                    <div className="button btn-1">
+                    <div className="button btn-1" onClick={() => setOpen(false)}>
                         <img width={30} src="./img/arrow.png" alt="arrow"/>
                     </div>
                     <div className="button btn-2">
