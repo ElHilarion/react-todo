@@ -1,4 +1,4 @@
-function Memo(){
+function Memo(props){
     return(
         <div className="memo">
             <div className="memo__header">
@@ -17,17 +17,9 @@ function Memo(){
                     </div>
                 </div>
             </div>
-            <h3>The English International School</h3>
-            <p>
-                The English International School offers a British style 
-                international education for boys and girls aged 3 to 18 
-                years old. We have two schools: one located at West part 
-                of Moscow, in a lovely residential area near Kutuzovskiy 
-                Prospect, and the other in the South-West of Moscow, 
-                in the prestigious residential and diplomatic area near 
-                the Leninskiy Prospekt and not far from Prospekt Vernadskogo.
-            </p>
-            <h2 className="memo__theme">English School</h2>
+            <h3>{props.title}</h3>
+            <p>{props.text}</p>
+            <h2 className="memo__theme">{props.theme}</h2>
         </div>
     );
 }

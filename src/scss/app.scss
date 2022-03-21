@@ -132,6 +132,8 @@ input{
     display: flex;
 
     .edit, .delete{
+        cursor: pointer;
+
         img{
             vertical-align: sub;
             margin-left: 5px;
@@ -140,7 +142,7 @@ input{
     }
 
     .edit{
-        padding-right: 25px;
+        margin-right: 25px;
     }
     .delete{
         color:#E74C3C;

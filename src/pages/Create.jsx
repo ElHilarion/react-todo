@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 
+function Create({ open, setOpen }) {
 
-function Create({ open, setOpen}) {
+
+  
     return (
         <div className={open ? 'content' : 'content open'}>
             <div className="content__header">
@@ -28,8 +30,8 @@ function Create({ open, setOpen}) {
                     </div>
                 </div>
             </div>
-            <div class="create__memo">
-                <div class="create__top">
+            <div className="create__memo">
+                <div className="create__top">
                     <div className="date">
                         <img width={22} src="./img/time.png" alt="date"/>
                         <span>06.03.2022</span>
@@ -45,9 +47,27 @@ function Create({ open, setOpen}) {
                         </div>
                     </div>
                 </div>
-                <textarea class="create__theme" placeholder="Theme"></textarea>
-                <textarea class="create__title" placeholder="Title"></textarea>
-                <textarea class="create__text" placeholder="Enter text..."></textarea>
+                <textarea 
+                    className="create__theme" 
+                    placeholder="Theme"
+                    
+                    
+                >
+                </textarea>
+                <textarea 
+                    className="create__title" 
+                    placeholder="Title"
+                 
+                    
+                >
+                </textarea>
+                <textarea 
+                    className="create__text" 
+                    placeholder="Enter text..."
+                    
+                    
+                >
+                </textarea>
             </div>
         </div>
     );

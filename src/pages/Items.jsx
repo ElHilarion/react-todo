@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import Memo from '../components/Memo';
 import Create from './Create';
 
+import { dataMemos } from '../dataMemos';
 
 function Items() {
     const [openCreate, setOpenCreate] = useState(false);
+    
 
     return(
         <div>
@@ -28,15 +30,25 @@ function Items() {
                 <div className="content__memos">
                     <div className="content__items">
                     
-                        <Memo/>
-
+                        {dataMemos.map((obj) => (
+                            <Memo 
+                                id={obj.id}
+                                title={obj.titleMemo}
+                                text={obj.textMemo}
+                                theme={obj.themeMemo}
+                            />
+                        ))}
+                       
                     </div>
                 </div> 
             </div> 
-
-            <Create open={openCreate} setOpen={setOpenCreate} /> 
+            <Create 
+                open={openCreate} 
+                setOpen={setOpenCreate}
+            /> 
         </div>
     );
 }
 
 export default Items;
+
