@@ -149,3 +149,39 @@ input{
     }
 }
 
+.delete-memo{
+    width: 400px;
+    height: 150px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 0px 25px rgba(4, 4, 4, 0.3);
+    border-radius: 30px;
+    z-index: 2;
+
+    &-btns{
+        display: flex;
+    }
+    &-no{
+        color: #E74C3C;
+    }
+    &-yes{
+        color: #2ECC71;
+    }
+}
+
+.overlay{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}

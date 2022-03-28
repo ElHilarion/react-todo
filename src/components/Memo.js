@@ -1,6 +1,22 @@
-function Memo(props){
+import React from "react";
+// import {useState} from "react";
+
+function Memo({
+        idMemo, 
+        titleMemo, 
+        textMemo, 
+        themeMemo, 
+        deleteMemo, 
+        // toggleOpenCreate,
+        // handleSelectMemo
+    }){
+
+    // const openEditMemo = () => {
+    //     handleSelectMemo();
+    // };
+        
     return(
-        <div className="memo">
+        <div className="memo" key={idMemo}>
             <div className="memo__header">
                 <div className="date">
                     <img width={22} src="./img/time.png" alt="remind"/>
@@ -11,15 +27,15 @@ function Memo(props){
                         <span>EDIT</span>
                         <img width={22} src="./img/edit.png" alt="remind"/>
                     </div>
-                    <div className="delete">
+                    <div className="delete" onClick={deleteMemo}>
                         <span>DELETE</span>
                         <img width={22} src="./img/cart.png" alt="remind"/>
                     </div>
                 </div>
             </div>
-            <h3>{props.title}</h3>
-            <p>{props.text}</p>
-            <h2 className="memo__theme">{props.theme}</h2>
+            <h3>{titleMemo}</h3>
+            <p>{textMemo}</p>
+            <h2 className="memo__theme">{themeMemo}</h2>
         </div>
     );
 }

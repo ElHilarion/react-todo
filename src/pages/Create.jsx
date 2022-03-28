@@ -1,20 +1,44 @@
-import React, { useState } from 'react';
+import React from "react";
+import { useState } from 'react';
 
+function Create({ toggleHideCreate, addMemoToContent }) {
+    const [memoTheme, setMemoTheme] = useState('');
+    const [memoTitle, setMemoTitle] = useState('');
+    const [memoText, setMemoText] = useState('');
 
-function Create({ open, setOpen }) {
+    const handleMemoThemeChange = (e) => {
+        setMemoTheme(e.target.value);
+    };
+    const handleMemoTitleChange = (e) => {
+        setMemoTitle(e.target.value);
+    };
+    const handleMemoTextChange = (e) => {
+        setMemoText(e.target.value);
+    };
 
+    const createMemo = (e) => {
+        e.preventDefault();
+        const memo = {
+            theme: memoTheme,
+            title: memoTitle,
+            text: memoText
+        }
 
-  
+        addMemoToContent(memo);
+    };
+
+    const currentDate = new Date().toLocaleDateString();
+
     return (
-        <div className={open ? 'content' : 'content open'}>
+        <div className="content">
             <div className="content__header">
                 <div className="header__search">
                     <input type="text" placeholder="Search"/>
                     <img width={30} src="./img/search.png" alt="search"/>
                 </div>
                 <div className="header__buttons">
-                    <div className="button btn-1" onClick={() => setOpen(false)}>
-                        <img width={30} src="./img/arrow.png" alt="arrow"/>
+                    <div className="button btn-1">
+                        <img width={30} src="./img/arrow.png" alt="arrow" onClick={toggleHideCreate} />
                     </div>
                     <div className="button btn-2">
                         <span>Add photo</span>
@@ -34,14 +58,14 @@ function Create({ open, setOpen }) {
                 <div className="create__top">
                     <div className="date">
                         <img width={22} src="./img/time.png" alt="date"/>
-                        <span>06.03.2022</span>
+                        <span>{currentDate}</span>
                     </div>
                     <div className="actions">
-                        <div className="edit">
+                        <div className="edit" onClick={createMemo}>
                             <span>SAVE</span>
                             <img width={22} src="./img/save.png" alt="Save"/>
                         </div>
-                        <div className="delete">
+                        <div className="delete" onClick={toggleHideCreate}>
                             <span>CANCEL</span>
                             <img width={22} src="./img/cancel.png" alt="Cancel"/>
                         </div>
@@ -50,22 +74,22 @@ function Create({ open, setOpen }) {
                 <textarea 
                     className="create__theme" 
                     placeholder="Theme"
-                    
-                    
+                    value={memoTheme}
+                    onChange={handleMemoThemeChange}
                 >
                 </textarea>
                 <textarea 
                     className="create__title" 
                     placeholder="Title"
-                 
-                    
+                    value={memoTitle}
+                    onChange={handleMemoTitleChange}
                 >
                 </textarea>
                 <textarea 
                     className="create__text" 
                     placeholder="Enter text..."
-                    
-                    
+                    value={memoText}
+                    onChange={handleMemoTextChange}
                 >
                 </textarea>
             </div>
