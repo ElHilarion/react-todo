@@ -2,7 +2,10 @@ function Menu(){
     return(
         <div className="menu">
           <div className="menu__container">
-            <h1>MENU</h1>
+            <div>
+              
+              <h1>MENU</h1>
+            </div>
             <div className="menu__themes">
               <div className="menu__themes-title">
                   <img width={22} src="./img/theme.png" alt="themes"/>

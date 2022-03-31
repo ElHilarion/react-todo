@@ -7,23 +7,26 @@ function Memo({
         textMemo, 
         themeMemo, 
         deleteMemo, 
-        // toggleOpenCreate,
-        // handleSelectMemo
+        toggleOpenEdit,
+        handleSelectMemo,
+        dateMemo,
     }){
 
-    // const openEditMemo = () => {
-    //     handleSelectMemo();
-    // };
+    const openEditMemo = () => {
+        handleSelectMemo();
+        toggleOpenEdit();
+    };
+
         
     return(
         <div className="memo" key={idMemo}>
             <div className="memo__header">
                 <div className="date">
                     <img width={22} src="./img/time.png" alt="remind"/>
-                    <span>09.03.2022</span>
+                    <span>{dateMemo}</span>
                 </div>
                 <div className="actions">
-                    <div className="edit">
+                    <div className="edit" onClick={openEditMemo}>
                         <span>EDIT</span>
                         <img width={22} src="./img/edit.png" alt="remind"/>
                     </div>

@@ -21,7 +21,8 @@ function Create({ toggleHideCreate, addMemoToContent }) {
         const memo = {
             theme: memoTheme,
             title: memoTitle,
-            text: memoText
+            text: memoText,
+            date: currentDate
         }
 
         addMemoToContent(memo);

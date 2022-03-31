@@ -3,12 +3,15 @@ import axios from 'axios';
 
 import Memo from '../components/Memo';
 import Create from './Create';
+import Edit from './Edit';
+import Content from '../components/Content';
 
 // import { dataMemos } from '../dataMemos';
 
 function Items() {
     const [openCreate, setOpenCreate] = useState(false);
-    // const [selectedMemo, setSelectedMemo] = useState({});
+    const [openEdit, setOpenEdit] = useState(false);
+    const [selectedMemo, setSelectedMemo] = useState({});
     const [memoArr, setMemoArr] = useState([]);
 
     useEffect(() => {
@@ -29,17 +32,20 @@ function Items() {
             });
     };
     
-    // const editMemo = (updatedMemo) => {
-    //     axios.put(`https://61966553af46280017e7e045.mockapi.io/memo/${updatedMemo.id}`, updatedMemo)
-    //         .then((response) => {
-    //             console.log('Memo edited: ', response.data);
-    //             fetchMemos();
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         });
-    // }
+    
+    // редактирование заметки
+    const editMemo = (updatedMemo) => {
+        axios.put(`https://61966553af46280017e7e045.mockapi.io/memo/${updatedMemo.id}`, updatedMemo)
+            .then((response) => {
+                console.log('Memo edited: ', response.data);
+                fetchMemos();
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
 
+    // создание заметки
     const addMemoToContent = (contentMemos) => {
         axios.post("https://61966553af46280017e7e045.mockapi.io/memo", contentMemos)
             .then((response) => {
@@ -56,7 +62,7 @@ function Items() {
         if(window.confirm("Do you really want to delete the memo?")){
             axios.delete(`https://61966553af46280017e7e045.mockapi.io/memo/${contentMemos.id}`)
                 .then((response) => {
-                    console.log("Post deleted: ", response.data);
+                    console.log("Memo deleted: ", response.data);
                     fetchMemos();
                 })
                 .catch((err) => {
@@ -73,8 +79,9 @@ function Items() {
                 textMemo={item.text}
                 themeMemo={item.theme}
                 deleteMemo={() => deleteMemo(item)}
-                // toggleOpenCreate={() => toggleOpenCreate()}
-                // handleSelectMemo={() => handleSelectMemo(item)}
+                toggleOpenEdit={() => toggleOpenEdit()}
+                handleSelectMemo={() => handleSelectMemo(item)}
+                dateMemo={item.date}
             />
         );
     });
@@ -86,43 +93,41 @@ function Items() {
         setOpenCreate(false);
     };
 
-    // const handleSelectMemo = (contentMemos) => {
-    //     setSelectedMemo(contentMemos);
-    // };
+    const toggleOpenEdit = () => {
+        setOpenEdit(true);
+    };
+    const toggleHideEdit = () => {
+        setOpenEdit(false);
+    };
+
+    // функция, которая заполняет форму данными из заметки
+    const handleSelectMemo = (contentMemos) => {
+        setSelectedMemo(contentMemos);
+    };
+
 
     return(
         <div>
-            {openCreate ?
-                <Create 
-                    toggleHideCreate={toggleHideCreate}
-                    addMemoToContent={addMemoToContent}
+            {openEdit ?
+                <Edit 
+                    toggleHideEdit={toggleHideEdit}
+                    editMemo={editMemo}
+                    selectedMemo={selectedMemo}
                 /> 
                 :
-                <div className="content">
-                    <div className="content__header">
-                        <div className="header__search">
-                            <input type="text" placeholder="Search"/>
-                            <img width={30} src="./img/search.png" alt="search"/>
-                        </div>
-                        <div className="header__buttons">
-                            <div className="button" onClick={toggleOpenCreate}>
-                                <span>Create entry</span>
-                                <img width={40} src="./img/plus.png" alt="create a new entry"/>
-                            </div>
-                            <div className="button">
-                                <span>Remind</span>
-                                <img width={30} src="./img/remind.png" alt="remind"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="content__memos">
-                        <div className="content__items">
-                        
-                            {contentMemos}
-                        
-                        </div>
-                    </div> 
-                </div> 
+                <div>
+                    {openCreate ?
+                        <Create 
+                            toggleHideCreate={toggleHideCreate}
+                            addMemoToContent={addMemoToContent}
+                        /> 
+                        :
+                        <Content
+                            toggleOpenCreate={toggleOpenCreate}
+                            contentMemos={contentMemos}
+                        />
+                    }
+                </div>
             }
             
         </div>
