@@ -8,7 +8,7 @@ body{
     background-attachment: fixed;
 }
 
-input{
+span, input, textarea{
     font-family: 'NTR', sans-serif;
 }
 
@@ -140,12 +140,33 @@ input{
             margin-bottom: -1px;
         }
     }
-
     .edit{
         margin-right: 25px;
     }
     .delete{
         color:#E74C3C;
+    }
+
+    // подчеркивание кнопок
+    .edit:after, .delete:after {
+        display: block;
+        content: ""; 
+        height: 2px;
+        border-radius: 10px;
+        width: 0%; 
+        background-color: #2ECC71; 
+        margin-top: -8px;
+    }
+    .delete:after{
+        background-color:#E74C3C;
+    }
+    .edit:hover:after,
+    .edit:focus:after {
+        width: 100%;
+    }
+    .delete:hover:after,
+    .delete:focus:after {
+        width: 100%;
     }
 }
 
@@ -185,3 +206,4 @@ input{
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 1;
 }
+

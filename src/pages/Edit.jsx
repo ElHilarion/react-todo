@@ -5,6 +5,7 @@ function Edit({ toggleHideEdit, editMemo, selectedMemo }) {
     const [memoTheme, setMemoTheme] = useState(selectedMemo.theme);
     const [memoTitle, setMemoTitle] = useState(selectedMemo.title);
     const [memoText, setMemoText] = useState(selectedMemo.text);
+    const [memoPicture, setMemoPicture] = useState('');
 
     const handleMemoThemeChange = (e) => {
         setMemoTheme(e.target.value);
@@ -29,15 +30,30 @@ function Edit({ toggleHideEdit, editMemo, selectedMemo }) {
         editMemo(memo);
     };
 
+    // добавление даты
     const currentDate = new Date().toLocaleDateString();
+
+     // добавление изображения заметки 
+     const handleMemoPhoto = (e) => {
+        setMemoPicture(e.target.files[0]);
+    };
+    const ImageMemo = ({image}) => {
+        return (
+            <div className="addPhoto__images">
+                <div className="addPhoto__img">
+                    <img src={URL.createObjectURL(image)} alt={image.name} />
+                </div>
+            </div>
+        );
+    };
 
     return (
         <div className="content">
             <div className="content__header">
-                <div className="header__search">
+                {/* <div className="header__search">
                     <input type="text" placeholder="Search"/>
                     <img width={30} src="./img/search.png" alt="search"/>
-                </div>
+                </div> */}
                 <div className="header__buttons">
                     <div className="button btn-1">
                         <img width={30} src="./img/arrow.png" alt="arrow" onClick={toggleHideEdit} />
@@ -73,20 +89,30 @@ function Edit({ toggleHideEdit, editMemo, selectedMemo }) {
                         </div>
                     </div>
                 </div>
-                <textarea 
-                    className="create__theme" 
-                    placeholder="Theme"
-                    value={memoTheme}
-                    onChange={handleMemoThemeChange}
-                >
-                </textarea>
-                <textarea 
-                    className="create__title" 
-                    placeholder="Title"
-                    value={memoTitle}
-                    onChange={handleMemoTitleChange}
-                >
-                </textarea>
+                <div className="textareas">
+                    <textarea 
+                        className="create__theme" 
+                        placeholder="Theme"
+                        value={memoTheme}
+                        onChange={handleMemoThemeChange}
+                    >
+                    </textarea>
+                    <textarea 
+                        className="create__title" 
+                        placeholder="Title"
+                        value={memoTitle}
+                        onChange={handleMemoTitleChange}
+                    >
+                    </textarea>
+                </div>
+                <div className="addPhoto__block">
+                    <label className="addPhoto__label" onChange={handleMemoPhoto}>
+                        <span>Add photo</span>
+                        <img width={25} height={25} src="./img/addPhoto.png" alt="add photo"/>
+                        <input type="file" className="input__file"/>
+                    </label>
+                    {memoPicture && <ImageMemo image={memoPicture} />}
+                </div>
                 <textarea 
                     className="create__text" 
                     placeholder="Enter text..."

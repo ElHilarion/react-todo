@@ -1,11 +1,12 @@
 import React from "react";
 
-function Content({toggleOpenCreate, contentMemos}){
+function Content({toggleOpenCreate, contentMemos, setSearchTitle}){
+
     return(
         <div className="content">
             <div className="content__header">
                 <div className="header__search">
-                    <input type="text" placeholder="Search"/>
+                    <input type="text" placeholder="Search" onChange={(e) => setSearchTitle(e.target.value)}/>
                     <img width={30} src="./img/search.png" alt="search"/>
                 </div>
                 <div className="header__buttons">
@@ -31,3 +32,6 @@ function Content({toggleOpenCreate, contentMemos}){
 }
 
 export default Content;
+
+// onChange в поиске позволяет получать данные из строки ввода текста
+// e.target.value выдает эти данные в консоль или куда нам необходимо их сохранять 

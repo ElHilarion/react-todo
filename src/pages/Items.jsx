@@ -6,20 +6,22 @@ import Create from './Create';
 import Edit from './Edit';
 import Content from '../components/Content';
 
-// import { dataMemos } from '../dataMemos';
-
 function Items() {
     const [openCreate, setOpenCreate] = useState(false);
     const [openEdit, setOpenEdit] = useState(false);
     const [selectedMemo, setSelectedMemo] = useState({});
+    const [searchTitle, setSearchTitle] = useState('');
     const [memoArr, setMemoArr] = useState([]);
 
+    // подгружение один раз данных с сервера mokapi при помощи хукка useEffect
     useEffect(() => {
-        setMemoArr(JSON.parse(localStorage.getItem('contentMemos')));
+        fetch("https://61966553af46280017e7e045.mockapi.io/memo")
+            .then ((response) => response.json())
+            .then((memoFromServer) => setMemoArr(memoFromServer))
+            .catch((err) => {
+                console.log("ERROR", err)
+            });
     }, []);
-    useEffect(() => {
-        window.localStorage.setItem('contentMemos', JSON.stringify([...memoArr]) || []);
-    });
 
     const fetchMemos = () => {
         axios
@@ -70,21 +72,6 @@ function Items() {
                 });
         }
     };
-    
-    const contentMemos = memoArr.map((item) => {
-        return(
-            <Memo 
-                idMemo={item.id}
-                titleMemo={item.title}
-                textMemo={item.text}
-                themeMemo={item.theme}
-                deleteMemo={() => deleteMemo(item)}
-                toggleOpenEdit={() => toggleOpenEdit()}
-                handleSelectMemo={() => handleSelectMemo(item)}
-                dateMemo={item.date}
-            />
-        );
-    });
 
     const toggleOpenCreate = () => {
         setOpenCreate(true);
@@ -105,6 +92,27 @@ function Items() {
         setSelectedMemo(contentMemos);
     };
 
+    // функция которая с помощью метода filter возвращает отфильтрованные данные
+    // сначала мы переводим название в нижний регистр, потом c помощью includes узнаем есть ли совпадение с тем что мы вводим в поиск
+    const searchMemosByTitle = memoArr.filter(memo => {
+        return memo.title.toLowerCase().includes(searchTitle.toLowerCase())
+    });
+    
+    const contentMemos = searchMemosByTitle.map((item) => {
+        return(
+            <Memo 
+                idMemo={item.id}
+                titleMemo={item.title}
+                textMemo={item.text}
+                themeMemo={item.theme}
+                deleteMemo={() => deleteMemo(item)}
+                toggleOpenEdit={() => toggleOpenEdit()}
+                handleSelectMemo={() => handleSelectMemo(item)}
+                dateMemo={item.date}
+                memoPicture={item.picture}
+            />
+        );
+    });
 
     return(
         <div>
@@ -125,6 +133,7 @@ function Items() {
                         <Content
                             toggleOpenCreate={toggleOpenCreate}
                             contentMemos={contentMemos}
+                            setSearchTitle={setSearchTitle}
                         />
                     }
                 </div>
