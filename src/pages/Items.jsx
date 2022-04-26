@@ -109,7 +109,6 @@ function Items() {
                 toggleOpenEdit={() => toggleOpenEdit()}
                 handleSelectMemo={() => handleSelectMemo(item)}
                 dateMemo={item.date}
-                memoPicture={item.picture}
             />
         );
     });

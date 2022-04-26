@@ -5,7 +5,6 @@ function Create({ toggleHideCreate, addMemoToContent }) {
     const [memoTheme, setMemoTheme] = useState('');
     const [memoTitle, setMemoTitle] = useState('');
     const [memoText, setMemoText] = useState('');
-    const [memoPicture, setMemoPicture] = useState(null);
 
     const handleMemoThemeChange = (e) => {
         setMemoTheme(e.target.value);
@@ -24,7 +23,6 @@ function Create({ toggleHideCreate, addMemoToContent }) {
             title: memoTitle,
             text: memoText,
             date: currentDate,
-            picture: memoPicture
         }
 
         addMemoToContent(memo);
@@ -32,30 +30,6 @@ function Create({ toggleHideCreate, addMemoToContent }) {
 
     // добавление даты 
     const currentDate = new Date().toLocaleDateString();
-
-    // добавление изображения заметки 
-    const handleMemoPicture = (e) => {
-    };
-
-    const ImageMemo = ({image}) => {
-        // удаление фото
-        const handleDeletePicture = () => {
-            setMemoPicture((image) => {
-                image.slice();
-            });
-        };
-        return (
-            <div className="addPhoto__images">
-                <div className="addPhoto__img">
-                    <img src="" alt={image.name} />
-                    <div className="overlay">
-                        <img width={25} height={25} src="./img/deletePhoto.png" className="delete__img" onClick={() => handleDeletePicture()}/>
-                    </div>
-                </div>
-            </div>
-        );
-    };
-
 
     return (
         <div className="content">
@@ -110,14 +84,6 @@ function Create({ toggleHideCreate, addMemoToContent }) {
                         onChange={handleMemoTitleChange}
                     >
                     </textarea>
-                </div>
-                <div className="addPhoto__block">
-                    <label className="addPhoto__label" onChange={handleMemoPicture}>
-                        <span>Add photo</span>
-                        <img width={25} height={25} src="./img/addPhoto.png" alt="add photo"/>
-                        <input type="file" className="input__file"/>
-                    </label>
-                    {memoPicture && <ImageMemo image={memoPicture} />}
                 </div>
                 <textarea 
                     className="create__text" 

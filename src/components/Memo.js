@@ -9,8 +9,7 @@ function Memo({
         deleteMemo, 
         toggleOpenEdit,
         handleSelectMemo,
-        dateMemo,
-        memoPicture
+        dateMemo
     }){
 
     const openEditMemo = () => {
@@ -38,9 +37,6 @@ function Memo({
                 </div>
             </div>
             <h3>{titleMemo}</h3>
-            <div>
-                <img width={630} height={300} src={memoPicture}/>
-            </div>
             <p>{textMemo}</p>
             <h2 className="memo__theme">{themeMemo}</h2>
         </div>
