@@ -35,3 +35,17 @@ Stack: • ReactJS + хуки • React-Calendar • React i18next • SCSS • 
 
 - React i18next локализация под англоязычную и русскоязычную аудиторию. (https://kramarenko.com.ua/post/react_i18)
 
+## Создание заметки.
+
+![Создание заметки](https://github.com/ElHilarion/react-todo/blob/master/create_memo.png)
+
+## Русская версия.
+
+![Переключение языка](https://github.com/ElHilarion/react-todo/blob/master/ru_version.png)
+
+## Поиск заметки по названию.
+
+![Поиск](https://github.com/ElHilarion/react-todo/blob/master/search.png)
+
+
+
