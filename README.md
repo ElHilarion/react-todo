@@ -7,7 +7,7 @@ Stack: • ReactJS + хуки • React-Calendar • React i18next • SCSS • 
 
 ![Главая страница](https://github.com/ElHilarion/react-todo/blob/master/nutcracker.png)
 
-## 📌Основные функции:
+## 📌Реализуемый функционал:
 
 - создание новой заметки ✅
 
