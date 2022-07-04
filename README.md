@@ -1,4 +1,4 @@
-# 🌰NUTCRACKER🌰 (ToDo) 
+# 🌰 NUTCRACKER (ToDo) 
 
 Веб-приложение для создания заметок. 
 https://nutcracker-29a73.web.app/ 
